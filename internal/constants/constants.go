@@ -11,6 +11,8 @@ const (
 	Update  Command = "update"
 	Delete  Command = "delete"
 	Toggle  Command = "toggle"
+	Done    Command = "done"
+	Undone  Command = "undone"
 )
 
 const TimeFormat string = time.RFC3339

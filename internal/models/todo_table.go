@@ -88,6 +88,27 @@ func (m *DBModels) GetTodoById(id int64) (*Todo, error) {
 	return &t, nil
 }
 
+func (m *DBModels) GetTodoByIsDone(isDone bool) ([]*Todo, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+	query := `select id, content, isDone, createdAt, updatedAt, doneAt from todo where isDone = $1`
+	rows, err := m.DB.QueryContext(ctx, query, isDone)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var todos []*Todo
+	for rows.Next() {
+		var todo Todo
+		err := rows.Scan(&todo.Id, &todo.Content, &todo.IsDone, &todo.CreatedAt, &todo.UpdatedAt, &todo.DoneAt)
+		if err != nil {
+			return nil, err
+		}
+		todos = append(todos, &todo)
+	}
+	return todos, nil
+}
+
 func (m *DBModels) DeleteTodoById(id int64) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()

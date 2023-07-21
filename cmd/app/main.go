@@ -142,6 +142,20 @@ func main() {
 			logger.Panic(err)
 			return
 		}
+	case constants.Done:
+		app.logger.Println("done")
+		err := app.FilterTask(true)
+		if err != nil {
+			logger.Panic(err)
+			return
+		}
+	case constants.Undone:
+		app.logger.Println("undone")
+		err := app.FilterTask(false)
+		if err != nil {
+			logger.Panic(err)
+			return
+		}
 	default:
 		app.logger.Println("command not avaliable")
 		ShowHelpMessage()
@@ -162,6 +176,8 @@ func ShowHelpMessage() {
     update    Update content task by id
     delete    Delete task by id
     toggle    Toggle done task by id
+    done      Show done task
+    undone    Show undone task
     help      Show this help message
 
   options:

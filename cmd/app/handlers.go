@@ -40,6 +40,16 @@ func (app *application) ReadTodoById(id int64) error {
 	return nil
 }
 
+func (app *application) FilterTask(isDone bool) error {
+	todos, err := app.models.DB.GetTodoByIsDone(isDone)
+	if err != nil {
+		return err
+	}
+	ts := models.Todos(todos)
+	ts.Print()
+	return nil
+}
+
 func (app *application) DeleteTodoById(id int64) error {
 	exist, err := app.models.DB.IsIdExist(id)
 	if err != nil {
