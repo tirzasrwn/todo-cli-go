@@ -32,6 +32,8 @@ $ ./todo --help
     update    Update content task by id
     delete    Delete task by id
     toggle    Toggle done task by id
+    done      Show done task
+    undone    Show undone task
     help      Show this help message
 
   options:
