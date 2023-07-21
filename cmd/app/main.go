@@ -69,7 +69,7 @@ func main() {
 		}
 	case constants.Create:
 		app.logger.Println("create")
-		if len(args) > 2 {
+		if len(args) < 2 {
 			logger.Panic("need more argument for content")
 			return
 		}
