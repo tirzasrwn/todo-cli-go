@@ -70,6 +70,14 @@ $ ./todo read 3
 --> 2023/07/21 07:59:57 command read success
 ```
 
+- Create new task
+
+```sh
+$ ./todo create "turn off the ac"
+--> 2023/07/22 08:45:28 create
+--> 2023/07/22 08:45:28 command create success
+```
+
 - Update content task by id
 
 ```sh
