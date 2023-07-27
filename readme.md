@@ -54,7 +54,7 @@ $ ./todo readall
 |3  |fix todo bug sql query        |true |2023-07-21T07:51:34+07:00|2023-07-21T08:02:54+07:00|2023-07-21T08:02:54+07:00|
 |4  |learn builder design pattern  |false|2023-07-21T07:52:39+07:00|2023-07-21T07:52:39+07:00|NULL                     |
 ------------------------------------------------------------------------------------------------------------------------
-Pending task is 2 & Done task is 2
+Undone task is 2, done task is 2, and total task is 4
 --> 2023/07/21 08:03:55 command readall success
 ```
 

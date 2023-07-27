@@ -12,17 +12,18 @@ func (app *application) ReadAll() error {
 		app.logger.Panic(err)
 		return err
 	}
-	var pending, done int64
+	var undone, done, total int64
 	for _, todo := range todos {
+		total++
 		if todo.IsDone {
 			done++
 		} else {
-			pending++
+			undone++
 		}
 	}
 	ts := models.Todos(todos)
 	ts.Print()
-	fmt.Printf("Pending task is %d & Done task is %d\n", pending, done)
+	fmt.Printf("Undone task is %d, done task is %d, and total task is %d\n", undone, done, total)
 	return nil
 }
 
