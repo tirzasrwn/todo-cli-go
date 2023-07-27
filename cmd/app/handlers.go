@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"todo-cli-go/internal/models"
 )
 
@@ -11,8 +12,17 @@ func (app *application) ReadAll() error {
 		app.logger.Panic(err)
 		return err
 	}
+	var pending, done int64
+	for _, todo := range todos {
+		if todo.IsDone {
+			done++
+		} else {
+			pending++
+		}
+	}
 	ts := models.Todos(todos)
 	ts.Print()
+	fmt.Printf("Pending task is %d & Done task is %d\n", pending, done)
 	return nil
 }
 
